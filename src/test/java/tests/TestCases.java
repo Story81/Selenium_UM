@@ -17,7 +17,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.screenshot;
 
 public class TestCases {
-    WebDriver driver;
+
     @BeforeTest
     public void auth(){
         LoginTest loginTest = new LoginTest();
@@ -28,12 +28,12 @@ public class TestCases {
     }
 
     @Test
-    public void openAssignLeave(){
+    public void openBuzz(){
         /*
-         * Проверка перехода в раздел "Assign Leave".
+         * Проверка перехода в раздел "Buzz".
          */
 
-        SelenideElement launchAssignLeave = $(By.xpath("//button[@class='oxd-icon-button oxd-icon-button--warn orangehrm-report-icon']"));
+        SelenideElement launchAssignLeave = $(By.xpath("//a[@href='/web/index.php/buzz/viewBuzz']"));
         launchAssignLeave.click();
 
     }
@@ -106,10 +106,10 @@ public class TestCases {
     @Test
     public void wrongDateClaims(){
         /*
-         * Проверка строки From Date на ввод не правильного формата данных в разделе "Time".
+         * Проверка строки From Date на ввод не правильного формата данных в разделе "Claim".
          */
         SelenideElement launchClaim = $(By.xpath("//a[@href='/web/index.php/claim/viewClaimModule']"));
-        SelenideElement fromDate = $(By.xpath("//input[@placeholder='mm-dd-yyyy']"));
+        SelenideElement fromDate = $(By.xpath("//input[@placeholder='dd-mm-yyyy']"));
         SelenideElement space = $(By.xpath("//div[@class='oxd-form-actions']"));
 
         launchClaim.click();

@@ -29,6 +29,10 @@ public class TestCases {
 
     @Test
     public void openAssignLeave(){
+        /*
+         * Проверка перехода в раздел "Assign Leave".
+         */
+
         SelenideElement launchAssignLeave = $(By.xpath("//button[@class='oxd-icon-button oxd-icon-button--warn orangehrm-report-icon']"));
         launchAssignLeave.click();
 
@@ -36,6 +40,10 @@ public class TestCases {
 
     @Test
     public void editFullName(){
+        /*
+         * Проверка редактирования ФИО в разделе "My info".
+         */
+
         SelenideElement launchMyInfo = $(By.xpath("//a[@href='/web/index.php/pim/viewMyDetails']"));
         SelenideElement firstNameField = $(By.name("firstName"));
         SelenideElement saveButton = $(By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space']"));
@@ -51,6 +59,10 @@ public class TestCases {
 
     @Test
     public void ovThirtyChar() throws AWTException {
+        /*
+         * Проверка строки ФИО на максимальное количество символов в разделе "My info".
+         */
+
         SelenideElement launchMyInfo = $(By.xpath("//a[@href='/web/index.php/pim/viewMyDetails']"));
         SelenideElement firstNameField = $(By.name("firstName"));
         SelenideElement saveButton = $(By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space']"));
@@ -73,6 +85,10 @@ public class TestCases {
 
     @Test
     public void wrongTimeFormat(){
+        /*
+         * Проверка строки Project на максимальное количество символов в разделе "Time".
+         */
+
         SelenideElement launchTime = $(By.xpath("//a[@href='/web/index.php/time/viewTimeModule']"));
         SelenideElement clickDropMenu = $(By.xpath("//span[@class='oxd-topbar-body-nav-tab-item']"));
         SelenideElement clickMyTimesheets = $(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/header/div[2]/nav/ul/li[1]/ul/li[1]"));
@@ -89,6 +105,9 @@ public class TestCases {
 
     @Test
     public void wrongDateClaims(){
+        /*
+         * Проверка строки From Date на ввод не правильного формата данных в разделе "Time".
+         */
         SelenideElement launchClaim = $(By.xpath("//a[@href='/web/index.php/claim/viewClaimModule']"));
         SelenideElement fromDate = $(By.xpath("//input[@placeholder='mm-dd-yyyy']"));
         SelenideElement space = $(By.xpath("//div[@class='oxd-form-actions']"));

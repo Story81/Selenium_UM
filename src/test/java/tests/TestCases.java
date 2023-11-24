@@ -44,16 +44,14 @@ public class TestCases {
          * Проверка редактирования ФИО в разделе "My info".
          */
 
-        SelenideElement launchMyInfo = $(By.xpath("//a[@href='/web/index.php/pim/viewMyDetails']"));
-        SelenideElement firstNameField = $(By.name("firstName"));
-        SelenideElement saveButton = $(By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space']"));
-
-        launchMyInfo.click();
-        firstNameField.click();
+        $(By.xpath("//a[@href='/web/index.php/pim/viewMyDetails']")).click();
+        $(By.name("firstName")).click();
         $(By.name("firstName")).sendKeys(Keys.CONTROL + "a");
         $(By.name("firstName")).sendKeys(Keys.BACK_SPACE);
-        firstNameField.setValue("John");
-        saveButton.click();
+        $(By.name("firstName")).setValue("John");
+        $(By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space']")).click();
+
+
 
     }
 
@@ -63,16 +61,13 @@ public class TestCases {
          * Проверка строки ФИО на максимальное количество символов в разделе "My info".
          */
 
-        SelenideElement launchMyInfo = $(By.xpath("//a[@href='/web/index.php/pim/viewMyDetails']"));
-        SelenideElement firstNameField = $(By.name("firstName"));
-        SelenideElement saveButton = $(By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space']"));
-
-        launchMyInfo.click();
-        firstNameField.click();
+        $(By.xpath("//a[@href='/web/index.php/pim/viewMyDetails']")).click();
+        $(By.name("firstName")).click();
         $(By.name("firstName")).sendKeys(Keys.CONTROL + "a");
         $(By.name("firstName")).sendKeys(Keys.BACK_SPACE);
-        firstNameField.setValue("ммммммммммммммммммммммммммммммм");
-        saveButton.click();
+        $(By.name("firstName")).setValue("ммммммммммммммммммммммммммммммм");
+        $(By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space']")).click();
+
 
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_CONTROL);
@@ -89,18 +84,14 @@ public class TestCases {
          * Проверка строки Project на максимальное количество символов в разделе "Time".
          */
 
-        SelenideElement launchTime = $(By.xpath("//a[@href='/web/index.php/time/viewTimeModule']"));
-        SelenideElement clickDropMenu = $(By.xpath("//span[@class='oxd-topbar-body-nav-tab-item']"));
-        SelenideElement clickMyTimesheets = $(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/header/div[2]/nav/ul/li[1]/ul/li[1]"));
-        SelenideElement editButton = $(By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--ghost']"));
-        SelenideElement project = $(By.xpath("//input[@placeholder='Type for hints...']"));
+        $(By.xpath("//a[@href='/web/index.php/time/viewTimeModule']")).click();
+        $(By.xpath("//span[@class='oxd-topbar-body-nav-tab-item']")).click();
+        $(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/header/div[2]/nav/ul/li[1]/ul/li[1]")).click();
+        $(By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--ghost']")).click();
+        $(By.xpath("//input[@placeholder='Type for hints...']")).click();
+        $(By.xpath("//input[@placeholder='Type for hints...']")).setValue("1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
 
-        launchTime.click();
-        clickDropMenu.click();
-        clickMyTimesheets.click();
-        editButton.click();
-        project.click();
-        project.setValue("1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
+
     }
 
     @Test
@@ -108,14 +99,12 @@ public class TestCases {
         /*
          * Проверка строки From Date на ввод не правильного формата данных в разделе "Claim".
          */
-        SelenideElement launchClaim = $(By.xpath("//a[@href='/web/index.php/claim/viewClaimModule']"));
-        SelenideElement fromDate = $(By.xpath("//input[@placeholder='dd-mm-yyyy']"));
-        SelenideElement space = $(By.xpath("//div[@class='oxd-form-actions']"));
+        $(By.xpath("//a[@href='/web/index.php/claim/viewClaimModule']")).click();
+        $(By.xpath("//input[@placeholder='dd-mm-yyyy']")).click();
+        $(By.xpath("//input[@placeholder='dd-mm-yyyy']")).setValue("efefe");
+        $(By.xpath("//div[@class='oxd-form-actions']")).click();
 
-        launchClaim.click();
-        fromDate.click();
-        fromDate.setValue("efefe");
-        space.click();
+
     }
 
 

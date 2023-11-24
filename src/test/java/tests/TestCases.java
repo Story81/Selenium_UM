@@ -33,8 +33,8 @@ public class TestCases {
          * Проверка перехода в раздел "Buzz".
          */
 
-        SelenideElement launchAssignLeave = $(By.xpath("//a[@href='/web/index.php/buzz/viewBuzz']"));
-        launchAssignLeave.click();
+        $(By.xpath("//a[@href='/web/index.php/buzz/viewBuzz']")).click();
+
 
     }
 

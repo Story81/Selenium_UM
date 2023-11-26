@@ -2,10 +2,7 @@ package tests;
 
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import pages.AdminPage;
-import pages.DashboardPage;
-import pages.LeavePage;
-import pages.LoginPage;
+import pages.*;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -15,6 +12,8 @@ public class BaseTest {
     DashboardPage dashboardPage = new DashboardPage();
     LeavePage leavePage = new LeavePage();
     AdminPage adminPage = new AdminPage();
+    ResetPage resetPage = new ResetPage();
+    PIMPage pimPage = new PIMPage();
 
     @BeforeTest
     public void setup () {
@@ -23,7 +22,6 @@ public class BaseTest {
 
     @AfterTest
     public void tearDown() {
-
     }
 
 }

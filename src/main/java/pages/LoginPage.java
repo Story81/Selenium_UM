@@ -14,3 +14,4 @@ public class LoginPage {
     public SelenideElement loginButton = $(By.xpath("//button[@type='submit']"));
 
 }
+

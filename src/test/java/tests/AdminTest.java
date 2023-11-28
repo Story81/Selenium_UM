@@ -10,7 +10,6 @@ public class AdminTest extends BaseTest {
 
     @Test
     public void adminTabClick(){
-        loginPage.login("Admin", "admin123");
         adminPage.adminTab.click();
         adminPage.userRoleButton.click();
         adminPage.userRoleDropDown.getWrappedElement().findElement(byText("Admin")).click();

@@ -11,6 +11,10 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
 
+    /**
+     * Create class objects
+     */
+    AdminPage adminPage = new AdminPage();
     BasePage basePage = new BasePage();
     BuzzPage buzzPage  = new BuzzPage();
     ClaimPage claimPage = new ClaimPage();
@@ -21,7 +25,7 @@ public class BaseTest {
 
 
     /**
-     * Here the user goes through automation
+     * Authentication for all methods is specified here
      */
     @BeforeTest
     public void login () {

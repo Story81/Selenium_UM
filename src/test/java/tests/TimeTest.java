@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selectors.byText;
 
 public class TimeTest extends BaseTest{
+
     /**
      * Section "Time" opens.
      * Click on dropmeny, choose "Timesheets".

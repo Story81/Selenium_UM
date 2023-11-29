@@ -2,7 +2,6 @@ package tests;
 
 import com.codeborne.selenide.Condition;
 import org.testng.annotations.Test;
-import pages.BuzzPage;
 
 public class BuzzTest extends BaseTest{
 
@@ -16,5 +15,4 @@ public class BuzzTest extends BaseTest{
         buzzPage.headerBuzz.shouldHave(Condition.exactText("Buzz"));
 
     }
-
 }

@@ -1,11 +1,8 @@
 package tests;
 
 import com.codeborne.selenide.Condition;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
-
-import static com.codeborne.selenide.Selenide.$;
 
 public class MyInfoTest extends BaseTest{
 
@@ -26,5 +23,4 @@ public class MyInfoTest extends BaseTest{
         myInfoPage.saveButton.click();
 
     }
-
 }

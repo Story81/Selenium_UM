@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class BuzzPage {
 
     /**
-     * These are frontend elements found by xpass
+     * Frontend elements found by xpass
      */
 
     public SelenideElement iconBuzz = $(byXpath("//a[@href='/web/index.php/buzz/viewBuzz']"));

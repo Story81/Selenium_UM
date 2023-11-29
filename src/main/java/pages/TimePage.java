@@ -16,7 +16,7 @@ public class TimePage {
     public SelenideElement editButton = $(byXpath("//button[@class='oxd-button oxd-button--medium oxd-button--ghost']"));
     public SelenideElement cellProject =$(byXpath("//input[@placeholder='Type for hints...']"));
     public SelenideElement chooseProject = $(byXpath("//div[@class='oxd-autocomplete-option']"));
-    public SelenideElement activitySelect = $(byXpath("//div[@class='oxd-select-text oxd-select-text--active oxd-select-text--error']"));
+    public SelenideElement activitySelect = $(byXpath("//div[@class='oxd-select-text oxd-select-text--active']"));
     public SelenideElement dropMenuActivity = $(byXpath("//div[@class='oxd-select-dropdown --positon-bottom']"));
     public SelenideElement selectedActivity =$(byXpath("//div[@class='oxd-select-text-input']"));
     public SelenideElement saveButton = $(byXpath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary']"));

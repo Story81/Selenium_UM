@@ -19,21 +19,6 @@ public class BaseTest {
     LoginPage loginPage = new LoginPage();
     MyInfoPage myInfoPage = new MyInfoPage();
     TimePage timePage = new TimePage();
-    WebDriver driver;
-
-
-    /**
-     * Here the user goes through automation
-     */
-    @BeforeTest
-    public void login () {
-        open("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-        loginPage.userNameField.setValue("Admin");
-        loginPage.passwordField.setValue("admin123");
-        loginPage.loginButton.click();
-        Configuration.holdBrowserOpen = true;
-    }
-
 
 
 }

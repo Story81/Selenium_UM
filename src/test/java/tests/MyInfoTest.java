@@ -10,10 +10,13 @@ import static com.codeborne.selenide.Selenide.$;
 public class MyInfoTest extends BaseTest{
 
     /**
-     * Enter a FirstName and save the data in the section
+     * 1. Section "My Info" opens.
+     * 2. Firstname is entered.
+     * 3. Click on the button "Save.
      */
     @Test
     public void editFirstName(){
+        loginPage.login();
         myInfoPage.iconMyInfo.click();
         myInfoPage.firstName.click();
         myInfoPage.firstName.sendKeys(Keys.CONTROL + "a");

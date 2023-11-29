@@ -8,11 +8,17 @@ import static com.codeborne.selenide.Selectors.byText;
 
 public class TimeTest extends BaseTest{
     /**
-     * Enters data for the Project cell, selects an item from the drop menu and checks the data to ensure it matches
+     * Section "Time" opens.
+     * Click on dropmeny, choose "Timesheets".
+     * Click in button "Edit".
+     * Enter data for the Project cell, select an item from the drop menu.
+     * Select a "QA Testing" from the drop menu of Activity.
+     * Check the data to ensure it matches.
      * @throws InterruptedException
      */
     @Test
-    public void ovMaxCharProject() throws InterruptedException {
+    public void selectFromActivityDropMenu() throws InterruptedException {
+        loginPage.login();
         timePage.iconTime.click();
         timePage.timesheets.click();
         timePage.dropMenu.click();

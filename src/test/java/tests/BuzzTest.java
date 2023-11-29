@@ -7,10 +7,11 @@ import pages.BuzzPage;
 public class BuzzTest extends BaseTest{
 
     /**
-     * Section Buzz opens
+     * Section "Buzz" opens.
      */
     @Test
     public void openBuzz(){
+        loginPage.login();
         buzzPage.iconBuzz.click();
         buzzPage.headerBuzz.shouldHave(Condition.exactText("Buzz"));
 

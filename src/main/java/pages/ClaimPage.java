@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class ClaimPage {
 
     /**
-     * These are frontend elements found by xpass
+     * Frontend elements found by xpass
      */
     public SelenideElement iconClaim = $(byXpath("//a[@href='/web/index.php/claim/viewClaimModule']"));
     public SelenideElement fromDate = $(byXpath("//input[@class='oxd-input oxd-input--active']"));

@@ -1,11 +1,11 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import pages.*;
 
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -21,6 +21,8 @@ public class BaseTest {
     LoginPage loginPage = new LoginPage();
     MyInfoPage myInfoPage = new MyInfoPage();
     TimePage timePage = new TimePage();
+    WebDriver driver;
+
 
 
 }

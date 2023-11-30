@@ -21,6 +21,7 @@ public class LoginPage {
         userNameField.setValue("Admin");
         passwordField.setValue("admin123");
         loginButton.click();
+        Configuration.holdBrowserOpen = true;
 
     }
 

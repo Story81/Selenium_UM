@@ -11,6 +11,8 @@ public class BuzzPage {
      * Frontend elements found by xpass
      */
 
+
+
     public SelenideElement iconBuzz = $(byXpath("//a[@href='/web/index.php/buzz/viewBuzz']"));
     public SelenideElement headerBuzz = $(byXpath("//h6[@class='oxd-text oxd-text--h6 oxd-topbar-header-breadcrumb-module']"));
 

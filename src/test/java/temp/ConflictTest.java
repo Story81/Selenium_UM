@@ -7,19 +7,19 @@ public class ConflictTest {
     @Test
     public void justTest () {
         /**
-         * smth interesting
+         * smth very very interesting
          */
         /**
-         * smth interesting
+         * I think smth interesting
          */
         /**
-         * smth interesting
+         * smth useless
          */
 
     }
 
     @Test
-    public void justTest2 () {
+    public void bestTest () {
         /**
          * smth interesting
          */

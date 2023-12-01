@@ -5,9 +5,9 @@ import org.testng.annotations.Test;
 public class OneMoreConflict {
 
     @Test
-    public void justTest () {
+    public void justSimpleTest () {
         /**
-         * smth interesting
+         * smth very interesting
          */
         /**
          * smth interesting

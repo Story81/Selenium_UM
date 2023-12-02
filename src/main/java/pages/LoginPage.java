@@ -19,11 +19,9 @@ public class LoginPage {
     public SelenideElement loginButton = $(By.xpath("//button[@type='submit']"));
 
     public void login () {
-
         userNameField.setValue("Admin");
         passwordField.setValue("admin123");
         loginButton.click();
-        Configuration.holdBrowserOpen = true;
 
     }
 

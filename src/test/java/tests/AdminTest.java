@@ -9,11 +9,9 @@ public class AdminTest extends BaseTest {
 
 
     @Test
-    public void adminTabClick(){
-        adminPage.adminTab.click();
-        adminPage.userRoleButton.click();
-        adminPage.userRoleDropDown.getWrappedElement().findElement(byText("Admin")).click();
-        adminPage.userRoleInput.shouldHave(Condition.exactText("Admin"));
+    public void adminUserClick(){
+        adminPage.userNameField.setValue("Admin");
+        adminPage.userNameField.shouldHave(Condition.exactValue("Admin"));
     }
 
 }

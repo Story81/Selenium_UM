@@ -1,23 +1,37 @@
 package tests;
 
+import com.codeborne.selenide.Driver;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import pages.AdminPage;
-import pages.DashboardPage;
-import pages.LeavePage;
-import pages.LoginPage;
+import pages.*;
 
+
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
 
-    LoginPage loginPage = new LoginPage();
-    DashboardPage dashboardPage = new DashboardPage();
-    LeavePage leavePage = new LeavePage();
+    /**
+     * Create class objects
+     */
     AdminPage adminPage = new AdminPage();
+    BasePage basePage = new BasePage();
+    BuzzPage buzzPage  = new BuzzPage();
+    ClaimPage claimPage = new ClaimPage();
+    LoginPage loginPage = new LoginPage();
+    MyInfoPage myInfoPage = new MyInfoPage();
+    TimePage timePage = new TimePage();
 
     @BeforeTest
-    public void setup () {
+    public void setup(){
         open("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     }
 
@@ -25,5 +39,6 @@ public class BaseTest {
     public void tearDown() {
 
     }
+
 
 }

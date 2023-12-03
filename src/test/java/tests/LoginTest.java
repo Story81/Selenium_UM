@@ -9,17 +9,13 @@ public class LoginTest extends BaseTest {
         loginPage.login("Admin", "admin123");
     }
 
-    @Test
-    public void loginWithValidCredentials() {
-        loginPage.loginWithValidCredentials("Admin", "admin123");
-    }
-
     /**
-     * Откорректированная проверка "Отображение сообщения при вводе неверного логина или пароля"
+     * Проверка "Отображение сообщения при вводе неверного логина или пароля"
      */
     @Test
     public void loginWithInvalidCredentials() {
-        loginPage.loginWithInvalidCredentials("Admin1", "admin1");
+        loginPage.login("Admin0", "admin1230");
+        loginPage.loginWithInvalidCredentials();
     }
 
     /**
@@ -37,6 +33,4 @@ public class LoginTest extends BaseTest {
     public void loginWithoutEnteringCredentialPassword() {
         loginPage.loginWithoutEnteringCredentialPassword("Admin");
     }
-
-
 }

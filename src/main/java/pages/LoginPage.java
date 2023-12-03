@@ -4,6 +4,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -16,32 +18,20 @@ public class LoginPage extends BasePage {
     public SelenideElement messageRequiredPassword = $x("//div/input[@name='password']/../following-sibling::span");
 
     public void login(String login, String password) {
-        userNameField.click();
         userNameField.setValue(login);
+        userNameField.shouldHave(Condition.exactValue(login),Duration.ofSeconds(5));
         passwordField.setValue(password);
+        passwordField.shouldHave(Condition.exactValue(password),Duration.ofSeconds(5));
         loginButton.click();
+        loginButton.shouldBe(Condition.disappear, Duration.ofSeconds(5));
     }
-
-
-    public void loginWithValidCredentials(String login, String password) {
-        userNameField.setValue(login);
-        userNameField.shouldHave(Condition.exactValue(login));
-        passwordField.setValue(password);
-        passwordField.shouldHave(Condition.exactValue(password));
-        loginButton.click();
-        loginButton.shouldBe(Condition.disappear);
-    }
-
 
     /**
      * Откорректированная проверка "Отображение сообщения при вводе неверного логина или пароля"
      * 1. Вводим невалидный логин или пароль
      * 2. Проверяем отображение сообщения с ошибкой "Invalid credentials"
      */
-    public void loginWithInvalidCredentials(String login, String password) {
-        userNameField.setValue(login);
-        passwordField.setValue(password);
-        loginButton.click();
+    public void loginWithInvalidCredentials() {
         message.shouldBe(visible);
     }
 

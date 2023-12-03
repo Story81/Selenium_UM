@@ -3,12 +3,14 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PIMPage extends BasePage {
-    //    LoginPage loginPage = new LoginPage();
+
     public SelenideElement userNameField = $x("(//span[@class='oxd-text oxd-text--span oxd-main-menu-item--name'])[2]");
     public SelenideElement titlePagePIM = $x("//h6[text()='PIM']");
     public SelenideElement employmentStatusField = $(byXpath("(//div[@class='oxd-select-text oxd-select-text--active'])[1]"));
@@ -21,13 +23,13 @@ public class PIMPage extends BasePage {
     public SelenideElement subUnitInput = $(byXpath("(//div[@class='oxd-select-text-input'])[4]"));
     public SelenideElement numberOfRecords = $(byXpath("(//span[@class='oxd-text oxd-text--span'])[1]"));
     public SelenideElement resetBtn = $(byXpath("//button[@class = 'oxd-button oxd-button--medium oxd-button--ghost']"));
-
+    public SelenideElement list1 = $(byXpath("//span[text()='Full-Time Permanent']"));
+    public SelenideElement list2 = $(byXpath("//span[text()='Development']"));
 
     public void openPIMPage() {
         userNameField.click();
         titlePagePIM.shouldHave(Condition.exactText("PIM"));
     }
-
 
     /**
      * Проверка "Поиск по полю "Employment Status"
@@ -37,9 +39,10 @@ public class PIMPage extends BasePage {
      * 4. проверить, что в итоговой таблице в первой строке "Employment Status" значение равно "Full-Time Permanent"
      */
 
+
     public void searchByEmploymentStatus() {
         employmentStatusField.click();
-        sleep(1_000); // костыль
+        list1.shouldBe(Condition.visible, Duration.ofSeconds(5));
         employmentStatusDropDown.getWrappedElement().findElement(byText("Full-Time Permanent")).click();
         employmentStatusInput.shouldHave(Condition.exactText("Full-Time Permanent"));
         searchBtn.click();
@@ -48,7 +51,7 @@ public class PIMPage extends BasePage {
 
     public void searchBySubUnit() {
         searchBySubUnitField.click();
-        sleep(2_000); // костыль
+        list2.shouldBe(Condition.visible, Duration.ofSeconds(5));
         searchBySubUnitDropDown.getWrappedElement().findElement(byText("Development")).click();
         subUnitInput.shouldHave(Condition.exactText("Development"));
         searchBtn.click();
@@ -69,8 +72,5 @@ public class PIMPage extends BasePage {
         resetBtn.click();
         subUnitInput.shouldHave(Condition.exactText("-- Select --"));
         employmentStatusInput.shouldHave(Condition.exactText("-- Select --"));
-
     }
-
-
 }

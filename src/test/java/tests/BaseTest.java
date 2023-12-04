@@ -14,9 +14,10 @@ public class BaseTest {
     AdminPage adminPage = new AdminPage();
     ResetPage resetPage = new ResetPage();
     PIMPage pimPage = new PIMPage();
+    ClaimPage claimPage = new ClaimPage();
 
     @BeforeTest
-    public void setup () {
+    public void setup() {
         open("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     }
 

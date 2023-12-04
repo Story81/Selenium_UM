@@ -1,12 +1,18 @@
 package tests;
 
+import com.codeborne.selenide.Condition;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.visible;
 
 public class LoginTest extends BaseTest {
 
     @Test
     public void login() {
         loginPage.login("Admin", "admin123");
+        loginPage.loginButton.shouldBe(Condition.disappear, Duration.ofSeconds(5));
     }
 
     /**
@@ -15,7 +21,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginWithInvalidCredentials() {
         loginPage.login("Admin0", "admin1230");
-        loginPage.loginWithInvalidCredentials();
+        loginPage.message.shouldBe(visible);
     }
 
     /**
@@ -23,7 +29,9 @@ public class LoginTest extends BaseTest {
      */
     @Test
     public void loginWithoutEnteringCredentialUsername() {
-        loginPage.loginWithoutEnteringCredentialUsername("admin123");
+        loginPage.login("", "admin123");
+        loginPage.messageRequiredName.shouldBe(visible);
+        loginPage.messageRequiredName.shouldHave(Condition.exactText("Required"));
     }
 
     /**
@@ -31,6 +39,8 @@ public class LoginTest extends BaseTest {
      */
     @Test
     public void loginWithoutEnteringCredentialPassword() {
-        loginPage.loginWithoutEnteringCredentialPassword("Admin");
+        loginPage.login("Admin", "");
+        loginPage.messageRequiredPassword.shouldBe(visible);
+        loginPage.messageRequiredPassword.shouldHave(Condition.exactText("Required"));
     }
 }

@@ -23,39 +23,5 @@ public class LoginPage extends BasePage {
         passwordField.setValue(password);
         passwordField.shouldHave(Condition.exactValue(password),Duration.ofSeconds(5));
         loginButton.click();
-        loginButton.shouldBe(Condition.disappear, Duration.ofSeconds(5));
-    }
-
-    /**
-     * Откорректированная проверка "Отображение сообщения при вводе неверного логина или пароля"
-     * 1. Вводим невалидный логин или пароль
-     * 2. Проверяем отображение сообщения с ошибкой "Invalid credentials"
-     */
-    public void loginWithInvalidCredentials() {
-        message.shouldBe(visible);
-    }
-
-    /**
-     * Проверка "Нажатие кнопки Login при незаполненном поле "Username"
-     * 1. Вводим валидный пароль при незаполненном логине
-     * 2. Проверяем отображение сообщения "Required" под незаполненном поле
-     */
-    public void loginWithoutEnteringCredentialUsername(String password) {
-        passwordField.setValue("admin123");
-        loginButton.click();
-        messageRequiredName.shouldBe(visible);
-        messageRequiredName.shouldHave(Condition.exactText("Required"));
-    }
-
-    /**
-     * Проверка "Нажатие кнопки Login при незаполненном поле "Password"
-     * 1. Вводим валидный логин при незаполненном поле пароля
-     * 2. Проверяем отображение сообщения "Required" под незаполненном поле
-     */
-    public void loginWithoutEnteringCredentialPassword(String login) {
-        userNameField.setValue("Admin");
-        loginButton.click();
-        messageRequiredPassword.shouldBe(visible);
-        messageRequiredPassword.shouldHave(Condition.exactText("Required"));
     }
 }

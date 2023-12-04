@@ -3,16 +3,10 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.time.Duration;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
 
-
-
-public class LoginPage {
+public class LoginPage extends BasePage {
 
     /**
      * These are frontend elements found by xpass
@@ -24,11 +18,13 @@ public class LoginPage {
     public SelenideElement messageRequiredName = $x("//div/input[@name='username']/../following-sibling::span");
     public SelenideElement messageRequiredPassword = $x("//div/input[@name='password']/../following-sibling::span");
 
-    public void login(String login, String password) {
+    public void login (String login, String password) {
         userNameField.setValue(login);
-        userNameField.shouldHave(Condition.exactValue(login),Duration.ofSeconds(5));
+        userNameField.shouldHave(Condition.exactValue(login));
         passwordField.setValue(password);
-        passwordField.shouldHave(Condition.exactValue(password),Duration.ofSeconds(5));
+        passwordField.shouldHave(Condition.exactValue(password));
         loginButton.click();
+
     }
+
 }

@@ -3,10 +3,6 @@ package tests;
 import com.codeborne.selenide.Condition;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
-import static com.codeborne.selenide.Condition.visible;
-
 public class LoginTest extends BaseTest {
 
     @Test

@@ -10,9 +10,8 @@ public class BuzzTest extends BaseTest{
      */
     @Test
     public void openBuzz(){
-        loginPage.login();
-        buzzPage.iconBuzz.click();
-        buzzPage.headerBuzz.shouldHave(Condition.exactText("Buzz"));
-
+        app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
+        app.buzzPage.iconBuzz.click();
+        app.buzzPage.headerBuzz.shouldHave(Condition.exactText("Buzz"));
     }
 }

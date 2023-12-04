@@ -19,21 +19,19 @@ public class TimeTest extends BaseTest{
      */
     @Test
     public void selectFromActivityDropMenu() throws InterruptedException {
-        loginPage.login();
-        timePage.iconTime.click();
-        timePage.timesheets.click();
-        timePage.dropMenu.click();
-        timePage.editButton.click();
-        timePage.cellProject.sendKeys(Keys.CONTROL + "a");
-        timePage.cellProject.sendKeys(Keys.BACK_SPACE);
-        timePage.cellProject.setValue("w");
+        app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
+        app.timePage.iconTime.click();
+        app.timePage.timesheets.click();
+        app.timePage.dropMenu.click();
+        app.timePage.editButton.click();
+        app.timePage.cellProject.sendKeys(Keys.CONTROL + "a");
+        app.timePage.cellProject.sendKeys(Keys.BACK_SPACE);
+        app.timePage.cellProject.setValue("w");
         Thread.sleep(2000);
-        timePage.chooseProject.click();
-        timePage.activitySelect.click();
+        app.timePage.chooseProject.click();
+        app.timePage.activitySelect.click();
         Thread.sleep(1000);
-        timePage.dropMenuActivity.getWrappedElement().findElement(byText("QA Testing")).click();
-        timePage.selectedActivity.shouldHave(Condition.exactText("QA Testing"));
-
-
+        app.timePage.dropMenuActivity.getWrappedElement().findElement(byText("QA Testing")).click();
+        app.timePage.selectedActivity.shouldHave(Condition.exactText("QA Testing"));
     }
 }

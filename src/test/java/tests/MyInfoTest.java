@@ -13,14 +13,14 @@ public class MyInfoTest extends BaseTest{
      */
     @Test
     public void editFirstName(){
-        loginPage.login();
-        myInfoPage.iconMyInfo.click();
-        myInfoPage.firstName.click();
-        myInfoPage.firstName.sendKeys(Keys.CONTROL + "a");
-        myInfoPage.firstName.sendKeys(Keys.BACK_SPACE);
-        myInfoPage.firstName.setValue("John");
-        myInfoPage.firstName.shouldHave(Condition.exactValue("John"));
-        myInfoPage.saveButton.click();
+        app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
+        app.myInfoPage.iconMyInfo.click();
+        app.myInfoPage.firstName.click();
+        app.myInfoPage.firstName.sendKeys(Keys.CONTROL + "a");
+        app.myInfoPage.firstName.sendKeys(Keys.BACK_SPACE);
+        app.myInfoPage.firstName.setValue("John");
+        app.myInfoPage.firstName.shouldHave(Condition.exactValue("John"));
+        app.myInfoPage.saveButton.click();
 
     }
 }

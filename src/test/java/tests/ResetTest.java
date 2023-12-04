@@ -9,7 +9,7 @@ public class ResetTest extends BaseTest {
      */
     @Test
     public void ClickOnForgotYourPassword() {
-        resetPage.ClickOnForgotYourPassword();
+        app.resetPage.ClickOnForgotYourPassword();
     }
 
     /**
@@ -17,6 +17,6 @@ public class ResetTest extends BaseTest {
      */
     @Test
     public void ReturnToLoginPageFromResetPage() {
-        resetPage.ReturnToLoginPageFromResetPage();
+        app.resetPage.ReturnToLoginPageFromResetPage();
     }
 }

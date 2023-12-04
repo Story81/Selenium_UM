@@ -13,5 +13,7 @@ public class App extends BasePage{
     public ClaimPage claimPage = new ClaimPage();
     public  MyInfoPage myInfoPage = new MyInfoPage();
     public  TimePage timePage = new TimePage();
+    public PIMPage pimPage = new PIMPage();
+    public ResetPage resetPage = new ResetPage();
     public UserCredentials userCredentials = new UserCredentials();
 }

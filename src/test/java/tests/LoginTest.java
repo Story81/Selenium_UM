@@ -3,12 +3,17 @@ package tests;
 import com.codeborne.selenide.Condition;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class LoginTest extends BaseTest {
 
+    /**
+     * Авторизация с верным логином и паролем
+     */
     @Test
-    public void login() {
-        loginPage.login("Admin", "admin123");
-        loginPage.loginButton.shouldBe(Condition.disappear, Duration.ofSeconds(5));
+    public void loginWithValidCredentials() {
+        app.loginPage.login("Admin", "admin123");
+        app.loginPage.loginButton.shouldBe(Condition.disappear, Duration.ofSeconds(5));
     }
 
     /**
@@ -16,8 +21,8 @@ public class LoginTest extends BaseTest {
      */
     @Test
     public void loginWithInvalidCredentials() {
-        loginPage.login("Admin0", "admin1230");
-        loginPage.message.shouldBe(visible);
+        app.loginPage.login("Admin0", "admin1230");
+        app.loginPage.errorMessage.shouldBe(Condition.visible);
     }
 
     /**
@@ -25,9 +30,9 @@ public class LoginTest extends BaseTest {
      */
     @Test
     public void loginWithoutEnteringCredentialUsername() {
-        loginPage.login("", "admin123");
-        loginPage.messageRequiredName.shouldBe(visible);
-        loginPage.messageRequiredName.shouldHave(Condition.exactText("Required"));
+        app.loginPage.login("", "admin123");
+        app.loginPage.messageRequiredName.shouldBe(Condition.visible);
+        app.loginPage.messageRequiredName.shouldHave(Condition.exactText("Required"));
     }
 
     /**
@@ -35,8 +40,8 @@ public class LoginTest extends BaseTest {
      */
     @Test
     public void loginWithoutEnteringCredentialPassword() {
-        loginPage.login("Admin", "");
-        loginPage.messageRequiredPassword.shouldBe(visible);
-        loginPage.messageRequiredPassword.shouldHave(Condition.exactText("Required"));
+        app.loginPage.login("Admin", "");
+        app.loginPage.messageRequiredPassword.shouldBe(Condition.visible);
+        app.loginPage.messageRequiredPassword.shouldHave(Condition.exactText("Required"));
     }
 }

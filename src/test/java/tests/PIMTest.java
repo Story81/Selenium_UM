@@ -12,8 +12,8 @@ public class PIMTest extends BaseTest {
      */
     @Test
     public void openPIMPage() {
-        loginPage.login("Admin", "admin123");
-        pimPage.openPIMPage();
+        app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
+        app.pimPage.openPIMPage();
     }
 
     /**
@@ -27,9 +27,9 @@ public class PIMTest extends BaseTest {
      */
     @Test
     public void searchBySupervisorName() {
-        loginPage.login("Admin", "admin123");
-        pimPage.openPIMPage();
-        pimPage.searchByEmploymentStatus();
+        app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
+        app.pimPage.openPIMPage();
+        app.pimPage.searchByEmploymentStatus();
     }
 
     /**
@@ -44,9 +44,9 @@ public class PIMTest extends BaseTest {
 
     @Test
     public void searchBySubUnit() {
-        loginPage.login("Admin", "admin123");
-        pimPage.openPIMPage();
-        pimPage.searchBySubUnit();
+        app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
+        app.pimPage.openPIMPage();
+        app.pimPage.searchBySubUnit();
     }
 
     /**
@@ -62,8 +62,8 @@ public class PIMTest extends BaseTest {
      */
     @Test
     public void resetPIMFields() {
-        loginPage.login("Admin", "admin123");
-        pimPage.openPIMPage();
-        pimPage.resetPIMFields();
+        app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
+        app.pimPage.openPIMPage();
+        app.pimPage.resetPIMFields();
     }
 }

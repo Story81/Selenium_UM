@@ -2,8 +2,8 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage extends BasePage {
@@ -11,12 +11,12 @@ public class LoginPage extends BasePage {
     /**
      * These are frontend elements found by xpass
      */
-    public SelenideElement userNameField = $(By.name("username"));
-    public SelenideElement passwordField = $(By.name("password"));
-    public SelenideElement loginButton = $(By.xpath("//button[@type='submit']"));
-    public SelenideElement errorMessage = $("//div[@role='alert']//p[text()='Invalid credentials']");
-    public SelenideElement messageRequiredName = $("//div/input[@name='username']/../following-sibling::span");
-    public SelenideElement messageRequiredPassword = $("//div/input[@name='password']/../following-sibling::span");
+    public SelenideElement userNameField = $(byName("username"));
+    public SelenideElement passwordField = $(byName("password"));
+    public SelenideElement loginButton = $(byXpath("//button[@type='submit']"));
+    public SelenideElement errorMessage = $(byXpath("//div[@role='alert']//p[text()='Invalid credentials']"));
+    public SelenideElement messageRequiredName = $(byXpath("//div/input[@name='username']/../following-sibling::span"));
+    public SelenideElement messageRequiredPassword = $(byXpath("//div/input[@name='password']/../following-sibling::span"));
 
     public void login (String login, String password) {
         userNameField.setValue(login);

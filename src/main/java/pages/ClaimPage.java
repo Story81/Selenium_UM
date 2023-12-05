@@ -38,7 +38,7 @@ public class ClaimPage extends BasePage{
     public void openClaimPage() {
         iconClaim.click();
     }
-    public void openCalendar() {
+    public void openCalendarFromDate() {
         calendarBtn.click();
         calendar.shouldBe(Condition.visible, Duration.ofSeconds(5));
     }

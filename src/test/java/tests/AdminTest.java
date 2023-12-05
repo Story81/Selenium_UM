@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Condition;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selectors.byText;
@@ -35,14 +36,13 @@ public class AdminTest extends BaseTest {
         String resultOfSearch2 = app.adminPage.countOfRecords.getText();
         int numberAfterSearch = extractNumberFromString(resultOfSearch2);
 
-        //сравниваю, что текст (ХХ) Records Found до и после не одинаовый
+        //сравниваю, что число количества записей до и после не одинаково
+        Assert.assertNotEquals(number, numberAfterSearch);
+        //сравниваю, что текст "(ХХ) Records Found" до и после не одинаковый
         app.adminPage.countOfRecords.shouldNotHave(Condition.exactText(resultOfSearch1));
 
        //тут я пыталась посчитать количество элементов в выборке, но у меня их получается на 1 больше, потому что один клиент имеет username = Admin
-        int nu = app.adminPage.countOfRecords.findElements(byXpath("//div[@role='cell']/div[text()='Admin']")).size();
-
-
+        // и я не могу получить столько же строк, что в "(ХХ) Records Found"
+        int numInTable = app.adminPage.countOfRecords.findElements(byXpath("//div[@role='cell']/div[text()='Admin']")).size();
     }
-
-
 }

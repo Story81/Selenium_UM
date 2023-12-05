@@ -30,15 +30,14 @@ public class ClaimTest extends BaseTest {
     public void openCalendar() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.claimPage.openClaimPage();
-        app.claimPage.openCalendar();
+        app.claimPage.openCalendarFromDate();
     }
-
 
     /**
      * Проверка "Выбор даты в поле From Date"
      * 1. Открыть календарь
      * 2. Кликнуть на стрелку влево (выбран - ноябрь)
-     * 3. Выбрать число (25)
+     * 3. Выбрать число (2)
      * 4. Проверить,что число, месяц и год выбраны верно
      */
     @Test
@@ -48,7 +47,7 @@ public class ClaimTest extends BaseTest {
         String day = "2";
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.claimPage.openClaimPage();
-        app.claimPage.openCalendar();
+        app.claimPage.openCalendarFromDate();
         app.claimPage.leftArrowMonthBtn.click();
         app.claimPage.monthFromDate.shouldHave(Condition.exactText(month), Duration.ofSeconds(5));
         app.claimPage.fromDate.shouldBe(Condition.visible, Duration.ofSeconds(5));
@@ -59,7 +58,7 @@ public class ClaimTest extends BaseTest {
         app.claimPage.defaultYear.shouldHave(Condition.exactText(year), Duration.ofSeconds(5));
     }
     /**
-     * Проверка "Выбор дня в поле From Date"
+     * Проверка "Выбор дня текущего месяца в поле From Date"
      * 1. Открыть календарь
      * 2. Выбрать число (1)
      * 3. Проверить, что число выбрано верно
@@ -69,7 +68,7 @@ public class ClaimTest extends BaseTest {
         String date = "1";
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.claimPage.openClaimPage();
-        app.claimPage.openCalendar();
+        app.claimPage.openCalendarFromDate();
         app.claimPage.fromDate.shouldBe(Condition.visible, Duration.ofSeconds(5));
         app.claimPage.listOfDate.getWrappedElement().findElement(byText(date)).click();
         app.claimPage.calendarBtn.click();
@@ -85,7 +84,7 @@ public class ClaimTest extends BaseTest {
     public void checkMonthAndYear() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.claimPage.openClaimPage();
-        app.claimPage.openCalendar();
+        app.claimPage.openCalendarFromDate();
         app.claimPage.checkDefaultMonthAndYear("5","December", "2023");
     }
 }

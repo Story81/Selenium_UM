@@ -2,16 +2,16 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class ResetPage extends BasePage {
     LoginPage loginPage = new LoginPage();
-    public SelenideElement forgotPasswordBtn = $(By.xpath("//p[text()='Forgot your password? ']"));
-    public SelenideElement pageResetPassword = $x("//h6[text()='Reset Password']");
-   public SelenideElement cancelBtn = $x("//button[contains(@class, 'forgot-password-button--cancel')]");
+    public SelenideElement forgotPasswordBtn = $(byXpath("//p[text()='Forgot your password? ']"));
+    public SelenideElement pageResetPassword = $(byXpath("//h6[text()='Reset Password']"));
+   public SelenideElement cancelBtn = $(byXpath("//button[contains(@class, 'forgot-password-button--cancel')]"));
 
 
     /**

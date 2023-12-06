@@ -44,4 +44,5 @@ public class LoginTest extends BaseTest {
         app.loginPage.messageRequiredPassword.shouldBe(Condition.visible);
         app.loginPage.messageRequiredPassword.shouldHave(Condition.exactText("Required"));
     }
+
 }

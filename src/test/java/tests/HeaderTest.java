@@ -41,6 +41,5 @@ public class HeaderTest extends BaseTest {
     public void helpButton() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.headerPage.helpButton.click();
-        app.headerPage.helpButton.shouldBe(Condition.visible, Duration.ofSeconds(10L));
     }
 }

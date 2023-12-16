@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PIMPage extends BasePage {
-
+    //    LoginPage loginPage = new LoginPage();
     public SelenideElement userNameField = $x("(//span[@class='oxd-text oxd-text--span oxd-main-menu-item--name'])[2]");
     public SelenideElement titlePagePIM = $x("//h6[text()='PIM']");
     public SelenideElement employmentStatusField = $(byXpath("(//div[@class='oxd-select-text oxd-select-text--active'])[1]"));
@@ -26,10 +26,12 @@ public class PIMPage extends BasePage {
     public SelenideElement list1 = $(byXpath("//span[text()='Full-Time Permanent']"));
     public SelenideElement list2 = $(byXpath("//span[text()='Development']"));
 
+
     public void openPIMPage() {
         userNameField.click();
         titlePagePIM.shouldHave(Condition.exactText("PIM"));
     }
+
 
     /**
      * Проверка "Поиск по полю "Employment Status"
@@ -60,17 +62,23 @@ public class PIMPage extends BasePage {
 
     public void resetPIMFields() {
         searchBySubUnitField.click();
-        sleep(2_000); // костыль
+//        sleep(2_000); // костыль
+        list2.shouldBe(Condition.visible, Duration.ofSeconds(5));
+
         searchBySubUnitDropDown.getWrappedElement().findElement(byText("Development")).click();
         subUnitInput.shouldHave(Condition.exactText("Development"));
 
         employmentStatusField.click();
-        sleep(1_000); // костыль
+       // sleep(1_000); // костыль
+        list1.shouldBe(Condition.visible, Duration.ofSeconds(5));
         employmentStatusDropDown.getWrappedElement().findElement(byText("Full-Time Permanent")).click();
         employmentStatusInTable.shouldHave(Condition.exactText("Full-Time Permanent"));
 
         resetBtn.click();
         subUnitInput.shouldHave(Condition.exactText("-- Select --"));
         employmentStatusInput.shouldHave(Condition.exactText("-- Select --"));
+
     }
+
+
 }

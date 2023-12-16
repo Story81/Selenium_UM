@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
 
 import static com.codeborne.selenide.Selectors.byText;
 
@@ -36,27 +37,31 @@ public class ClaimTest extends BaseTest {
     /**
      * Проверка "Выбор даты в поле From Date"
      * 1. Открыть календарь
-     * 2. Кликнуть на стрелку влево (выбран - ноябрь)
+     * 2. Кликнуть на стрелку влево (выбран предыдущий месяц). Проверяем что выбранный месяц в календаре не равен текущему.
      * 3. Выбрать число (2)
-     * 4. Проверить,что число, месяц и год выбраны верно
+     * 4. Проверить,что выбранная ранее дата в календаре отображается верно
+     * (для этого принимаем на вход текущую дату и парсим. В итоге получаем текущий год)
      */
     @Test
     public void selectMonthInFromDate() {
-        String year = "2023";
-        String month = "November";
-        String day = "2";
+        String expression = String.valueOf((LocalDateTime.now()));
+        String year = String.valueOf(Integer.parseInt(expression.substring(0, 4)));
+
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.claimPage.openClaimPage();
         app.claimPage.openCalendarFromDate();
+        String currentMonth = app.claimPage.monthFromDate.getText();
         app.claimPage.leftArrowMonthBtn.click();
-        app.claimPage.monthFromDate.shouldHave(Condition.exactText(month), Duration.ofSeconds(5));
+        app.claimPage.monthFromDate.shouldNotHave(Condition.exactText(currentMonth), Duration.ofSeconds(5));
         app.claimPage.fromDate.shouldBe(Condition.visible, Duration.ofSeconds(5));
-        app.claimPage.listOfDate.getWrappedElement().findElement(byText(day)).click();
+        app.claimPage.listOfDate.getWrappedElement().findElement(byText("2")).click();
         app.claimPage.calendarBtn.click();
-        app.claimPage.defaultDay.shouldHave(Condition.exactText(day), Duration.ofSeconds(5));
-        app.claimPage.defaultMonth.shouldHave(Condition.exactText(month), Duration.ofSeconds(5));
+        app.claimPage.defaultDay.shouldHave(Condition.exactText("2"), Duration.ofSeconds(5));
+        String previousMonth = app.claimPage.previousMonth.getText();
+        app.claimPage.defaultMonth.shouldHave(Condition.exactText(previousMonth), Duration.ofSeconds(5));
         app.claimPage.defaultYear.shouldHave(Condition.exactText(year), Duration.ofSeconds(5));
     }
+
     /**
      * Проверка "Выбор дня текущего месяца в поле From Date"
      * 1. Открыть календарь
@@ -78,13 +83,13 @@ public class ClaimTest extends BaseTest {
     /**
      * Проверка "Отображение даты в календаре по умолчанию"
      * 1. Открыть календарь
-     * 2. Проверить число, месяц, год
+     * 2. Проверить число, месяц, год (парсим текущую полученную дату на число, месяц и год. Затем сверяем с тем, что отображается в календаре по умолчанию)
      */
     @Test
     public void checkMonthAndYear() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.claimPage.openClaimPage();
         app.claimPage.openCalendarFromDate();
-        app.claimPage.checkDefaultMonthAndYear("5","December", "2023");
+        app.claimPage.checkDefaultMonthAndYear();
     }
 }

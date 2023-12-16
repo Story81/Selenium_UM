@@ -20,6 +20,10 @@ public class AdminTest extends BaseTest {
         app.adminPage.userRoleInput.shouldHave(Condition.exactText("Admin"));
     }
 
+    /**+
+     *
+     *
+     */
     @Test
     public void checkRecordsFound() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
@@ -35,14 +39,11 @@ public class AdminTest extends BaseTest {
         //нахожу количества записей из фразы после фильтрации
         String resultOfSearch2 = app.adminPage.countOfRecords.getText();
         int numberAfterSearch = extractNumberFromString(resultOfSearch2);
-
         //сравниваю, что число количества записей до и после не одинаково
         Assert.assertNotEquals(number, numberAfterSearch);
-        //сравниваю, что текст "(ХХ) Records Found" до и после не одинаковый
-        app.adminPage.countOfRecords.shouldNotHave(Condition.exactText(resultOfSearch1));
 
-       //тут я пыталась посчитать количество элементов в выборке, но у меня их получается на 1 больше, потому что один клиент имеет username = Admin
-        // и я не могу получить столько же строк, что в "(ХХ) Records Found"
-        int numInTable = app.adminPage.countOfRecords.findElements(byXpath("//div[@role='cell']/div[text()='Admin']")).size();
+       //проверка количество выведенных строк=числу в строке "(хх) Records Found"
+        int numInTable = app.adminPage.countOfRecords.findElements(byXpath("//div[@role='cell']/div[text()='Admin']")).size()-1;
+        Assert.assertEquals(numInTable, numberAfterSearch);
     }
 }

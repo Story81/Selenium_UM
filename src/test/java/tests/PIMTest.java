@@ -2,6 +2,8 @@ package tests;
 
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class PIMTest extends BaseTest {
 
     /**

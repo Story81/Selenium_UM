@@ -66,6 +66,7 @@ public class PIMTest extends BaseTest {
     public void resetPIMFields() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.pimPage.openPIMPage();
+        app.pimPage.searchOnTwoFields();
         app.pimPage.resetPIMFields();
     }
 }

@@ -19,6 +19,7 @@ public class AdminTest extends BaseTest {
         app.adminPage.userRoleDropDown.getWrappedElement().findElement(byText("Admin")).click();
         app.adminPage.userRoleInput.shouldHave(Condition.exactText("Admin"));
     }
+
     /**
      * Open  "Admin" Page
      * Click on the DropDownMenue
@@ -47,9 +48,9 @@ public class AdminTest extends BaseTest {
     }
 
 
-    /**+
+    /**
+     * +
      * Проверка работы фильтрации на странице
-     *
      */
     @Test
     public void checkRecordsFound() {
@@ -59,18 +60,17 @@ public class AdminTest extends BaseTest {
         app.adminPage.userRoleDropDown.getWrappedElement().findElement(byText("Admin")).click();
         app.adminPage.userRoleInput.shouldHave(Condition.exactText("Admin"));
 
-        //нахожу количества записей из фразы до фильтрации
+        //количества записей из фразы до фильтрации
         String resultOfSearch1 = app.adminPage.countOfRecords.getText();
         int number = extractNumberFromString(resultOfSearch1);
         app.adminPage.searchBtn.click();
-        //нахожу количества записей из фразы после фильтрации
+        //количества записей из фразы после фильтрации
         String resultOfSearch2 = app.adminPage.countOfRecords.getText();
         int numberAfterSearch = extractNumberFromString(resultOfSearch2);
-        //сравниваю, что число количества записей до и после не одинаково
         Assert.assertNotEquals(number, numberAfterSearch);
 
-       //проверка количество выведенных строк=числу в строке "(хх) Records Found"
-        int numInTable = app.adminPage.countOfRecords.findElements(byXpath("//div[@role='cell']/div[text()='Admin']")).size()-1;
+        //проверка: количество выведенных строк в итоговой выборке = числу в строке "(хх) Records Found"
+        int numInTable = app.adminPage.countOfRecords.findElements(byXpath("//div[@role='cell']/div[text()='Admin']")).size() - 1;
         Assert.assertEquals(numInTable, numberAfterSearch);
     }
 }

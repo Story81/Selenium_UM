@@ -5,8 +5,9 @@ import com.codeborne.selenide.SelenideElement;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selenide.$;
 
 public class PIMPage extends BasePage {
 
@@ -59,25 +60,20 @@ public class PIMPage extends BasePage {
         numberOfRecords.shouldHave(Condition.exactText("(4) Records Found"));
     }
 
-    public void resetPIMFields() {
+    public void searchOnTwoFields() {
         searchBySubUnitField.click();
-
         list2.shouldBe(Condition.visible, Duration.ofSeconds(5));
-
         searchBySubUnitDropDown.getWrappedElement().findElement(byText("Development")).click();
         subUnitInput.shouldHave(Condition.exactText("Development"));
-
         employmentStatusField.click();
-
         list1.shouldBe(Condition.visible, Duration.ofSeconds(5));
         employmentStatusDropDown.getWrappedElement().findElement(byText("Full-Time Permanent")).click();
-        employmentStatusInTable.shouldHave(Condition.exactText("Full-Time Permanent"));
+        employmentStatusInput.shouldHave(Condition.exactText("Full-Time Permanent"));
+    }
 
+    public void resetPIMFields() {
         resetBtn.click();
         subUnitInput.shouldHave(Condition.exactText("-- Select --"));
         employmentStatusInput.shouldHave(Condition.exactText("-- Select --"));
-
     }
-
-
 }

@@ -11,13 +11,10 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.time.Duration;
 
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.webdriver;
 import static com.codeborne.selenide.WebDriverConditions.url;
 
-public class MyInfoTest extends BaseTest {
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
 
 public class MyInfoTest extends BaseTest {
 
@@ -109,4 +106,4 @@ public class MyInfoTest extends BaseTest {
         app.myInfoPage.saveButton2.click();
     }
 }
-}
+

@@ -1,14 +1,19 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 
-public class LeavePage extends BasePage {
+/**
+ * These are frontend elements found by xpass
+ */
 
-    public SelenideElement userNameField = $(By.name("username"));
-    public SelenideElement passwordField = $(By.name("password"));
-    public SelenideElement loginButton = $(By.xpath("//button[@type='submit']"));
+public class LeavePage extends BasePage {
+    public SelenideElement leaveTab = $(byXpath("(//span[@class='oxd-text oxd-text--span oxd-main-menu-item--name'])[3]"));
+    public SelenideElement myLeave = $(byXpath("//li[@class='oxd-topbar-body-nav-tab --visited']"));
+    public SelenideElement userNameField = $(byName("username"));
+    public SelenideElement passwordField = $(byName("password"));
+    public SelenideElement loginButton = $(byXpath("//button[@type='submit']"));
 
 }

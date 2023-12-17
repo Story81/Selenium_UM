@@ -1,13 +1,12 @@
 package tests;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.testng.Tag;
+import jdk.jfr.Description;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
 
 public class MyInfoTest extends BaseTest {
 
@@ -17,6 +16,8 @@ public class MyInfoTest extends BaseTest {
      * 3. Click on the button "SaveButton".
      */
     @Test
+    @Description("")
+    @Tag("")
     public void editFirstName() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.myInfoPage.iconMyInfo.click();
@@ -35,6 +36,8 @@ public class MyInfoTest extends BaseTest {
      * 3. Click on the button "SaveButton".
      */
     @Test
+    @Description("")
+    @Tag("")
     public void editLastName() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.myInfoPage.iconMyInfo.click();
@@ -52,6 +55,8 @@ public class MyInfoTest extends BaseTest {
      * 3. Click on the button "SaveButton".
      */
     @Test
+    @Description("")
+    @Tag("")
     public void editMaritalStatus() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.myInfoPage.iconMyInfo.click();
@@ -66,6 +71,8 @@ public class MyInfoTest extends BaseTest {
      * 3. Click on the button "SaveButton".
      */
     @Test
+    @Description("")
+    @Tag("")
     public void editBloodType() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.myInfoPage.iconMyInfo.click();

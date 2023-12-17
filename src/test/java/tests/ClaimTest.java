@@ -1,6 +1,8 @@
 package tests;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.testng.Tag;
+import jdk.jfr.Description;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -15,6 +17,8 @@ public class ClaimTest extends BaseTest {
      * 3. Input incorrect data format.
      */
     @Test
+    @Description("")
+    @Tag("")
     public void wrongDateFormat() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.claimPage.iconClaim.click();

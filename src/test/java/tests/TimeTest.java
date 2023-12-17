@@ -1,6 +1,8 @@
 package tests;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.testng.Tag;
+import jdk.jfr.Description;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
 
@@ -18,6 +20,8 @@ public class TimeTest extends BaseTest{
      * @throws InterruptedException
      */
     @Test
+    @Description("")
+    @Tag("")
     public void selectFromActivityDropMenu() throws InterruptedException {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.timePage.iconTime.click();
@@ -35,6 +39,8 @@ public class TimeTest extends BaseTest{
         app.timePage.selectedActivity.shouldHave(Condition.exactText("QA Testing"));
     }
     @Test
+    @Description("")
+    @Tag("")
     public void timeTabClick() {
         app.loginPage.login("Admin", "admin123");
         app.timePage.clickTime.click();
@@ -42,6 +48,8 @@ public class TimeTest extends BaseTest{
     }
 
     @Test
+    @Description("")
+    @Tag("")
     public void searchByName() {
         app.loginPage.login("Admin", "admin123");
         app.timePage.clickTime.click();

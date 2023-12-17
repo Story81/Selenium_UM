@@ -34,4 +34,21 @@ public class TimeTest extends BaseTest{
         app.timePage.dropMenuActivity.getWrappedElement().findElement(byText("QA Testing")).click();
         app.timePage.selectedActivity.shouldHave(Condition.exactText("QA Testing"));
     }
+    @Test
+    public void timeTabClick() {
+        app.loginPage.login("Admin", "admin123");
+        app.timePage.clickTime.click();
+        app.timePage.haveTextSelect.shouldBe(Condition.exactText("Select Employee"));
+    }
+
+    @Test
+    public void searchByName() {
+        app.loginPage.login("Admin", "admin123");
+        app.timePage.clickTime.click();
+        app.timePage.haveTextType.shouldBe(Condition.exactText("Type for hints..."));
+        app.timePage.searchByName.click();
+        app.timePage.searchByName.setValue("Paul Collings");
+        app.timePage.searchByName.shouldBe(Condition.exactValue("Paul Collings"));
+        app.timePage.viewButton.click();
+    }
 }

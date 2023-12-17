@@ -47,6 +47,15 @@ public class AdminTest extends BaseTest {
         app.adminPage.addButton.click();
     }
 
+    @Test
+    public void enabledTabClik() {
+        app.loginPage.login("Admin", "admin123");
+        app.adminPage.adminTab.click();
+        app.adminPage.statusRoleButton.click();
+        app.adminPage.statusRoleDropDown.getWrappedElement().findElement(byText("Enable")).click();
+        app.adminPage.statusRoleInput.shouldHave(Condition.exactText("Enable"));
+    }
+
 
     /**
      * +

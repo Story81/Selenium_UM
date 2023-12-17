@@ -16,7 +16,6 @@ public class App extends BasePage {
     public PIMPage pimPage = new PIMPage();
     public ResetPage resetPage = new ResetPage();
     public UserCredentials userCredentials = new UserCredentials();
-
     public HeaderPage headerPage = new HeaderPage();
     public LeavePage leavePage = new LeavePage();
 }

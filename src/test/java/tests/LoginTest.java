@@ -5,6 +5,9 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.sleep;
+
 public class LoginTest extends BaseTest {
 
     /**
@@ -43,5 +46,16 @@ public class LoginTest extends BaseTest {
         app.loginPage.login("Admin", "");
         app.loginPage.messageRequiredPassword.shouldBe(Condition.visible);
         app.loginPage.messageRequiredPassword.shouldHave(Condition.exactText("Required"));
+    }
+    @Test
+    public void loginInvalidCredentials() {
+        app.loginPage.userNameField.click();
+        app.loginPage.userNameField.setValue("sjkdksf");
+        app.loginPage.passwordField.setValue("admin123");
+        app.loginPage.loginButton.click();
+        app.loginPage.login("Addmin", "admin123");
+        sleep(3000);
+        app.loginPage.invalidCredentional.getWrappedElement().findElement(byText("Invalid credentials"));
+
     }
 }

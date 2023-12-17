@@ -1,6 +1,8 @@
 package tests;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.testng.Tag;
+import jdk.jfr.Description;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -15,6 +17,8 @@ public class HeaderTest extends BaseTest {
      */
 
     @Test
+    @Description("")
+    @Tag("")
     public void userDropdownTabAboutButton() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.headerPage.userDropdownTabButton.click();
@@ -27,6 +31,8 @@ public class HeaderTest extends BaseTest {
      */
 
     @Test
+    @Description("")
+    @Tag("")
     public void userDropdownTabSupportButton() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.headerPage.userDropdownTabButton.click();
@@ -38,6 +44,8 @@ public class HeaderTest extends BaseTest {
      */
 
     @Test
+    @Description("")
+    @Tag("")
     public void helpButton() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.headerPage.helpButton.click();

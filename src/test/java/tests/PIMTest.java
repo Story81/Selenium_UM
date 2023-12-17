@@ -1,5 +1,7 @@
 package tests;
 
+import io.qameta.allure.testng.Tag;
+import jdk.jfr.Description;
 import org.testng.annotations.Test;
 
 public class PIMTest extends BaseTest {
@@ -11,6 +13,8 @@ public class PIMTest extends BaseTest {
      * 3. На открывшейся странице проверить отображение заголовка PIM
      */
     @Test
+    @Description("")
+    @Tag("")
     public void openPIMPage() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.pimPage.openPIMPage();
@@ -26,6 +30,8 @@ public class PIMTest extends BaseTest {
      * 6. проверить, что в итоговой таблице в первой строке "Employment Status" значение равно "Full-Time Permanent"
      */
     @Test
+    @Description("")
+    @Tag("")
     public void searchBySupervisorName() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.pimPage.openPIMPage();
@@ -43,6 +49,8 @@ public class PIMTest extends BaseTest {
      */
 
     @Test
+    @Description("")
+    @Tag("")
     public void searchBySubUnit() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.pimPage.openPIMPage();
@@ -61,6 +69,8 @@ public class PIMTest extends BaseTest {
      * 6. Проверить, что значение полей "Sub Unit" и "Full-Time Permanent" обнулились и имеют значение "Select"
      */
     @Test
+    @Description("")
+    @Tag("")
     public void resetPIMFields() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.pimPage.openPIMPage();

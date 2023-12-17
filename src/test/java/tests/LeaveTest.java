@@ -1,6 +1,8 @@
 package tests;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.testng.Tag;
+import jdk.jfr.Description;
 import org.testng.annotations.Test;
 
 public class LeaveTest extends BaseTest {
@@ -10,12 +12,16 @@ public class LeaveTest extends BaseTest {
      * 2. "My Leave" opens
      */
     @Test
+    @Description("")
+    @Tag("")
     public void myLeave() {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.leavePage.leaveTab.click();
         app.leavePage.myLeave.click();
     }
     @Test
+    @Description("")
+    @Tag("")
     public void leaveTabClick() {
         app.loginPage.login("Admin", "admin123");
         app.leavePage.clickLeave.click();
@@ -24,6 +30,8 @@ public class LeaveTest extends BaseTest {
     }
 
     @Test
+    @Description("")
+    @Tag("")
     public void searchEmployeeName() {
         app.loginPage.login("Admin", "admin123");
         app.leavePage.clickLeave.click();

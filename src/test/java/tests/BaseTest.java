@@ -6,6 +6,7 @@ import org.testng.annotations.*;
 import utils.*;
 
 
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
@@ -19,7 +20,7 @@ public class BaseTest {
 
     @AfterTest
     public void tearDown() {
-
+        closeWebDriver();
     }
 
 

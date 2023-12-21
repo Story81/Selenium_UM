@@ -6,7 +6,6 @@ import jdk.jfr.Description;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
 
 import static com.codeborne.selenide.Selectors.byText;
 
@@ -48,40 +47,34 @@ public class ClaimTest extends BaseTest {
      */
     @Test
     public void selectMonthInFromDate() {
-        String expression = String.valueOf((LocalDateTime.now()));
-        String year = String.valueOf(Integer.parseInt(expression.substring(0, 4)));
-
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.claimPage.openClaimPage();
         app.claimPage.openCalendarFromDate();
-        String currentMonth = app.claimPage.monthFromDate.getText();
         app.claimPage.leftArrowMonthBtn.click();
-        app.claimPage.monthFromDate.shouldNotHave(Condition.exactText(currentMonth), Duration.ofSeconds(5));
+        app.claimPage.monthFromDate.shouldNotHave(Condition.exactText(app.claimPage.getCurrentMonth()), Duration.ofSeconds(5));
         app.claimPage.fromDate.shouldBe(Condition.visible, Duration.ofSeconds(5));
         app.claimPage.listOfDate.getWrappedElement().findElement(byText("2")).click();
         app.claimPage.calendarBtn.click();
         app.claimPage.defaultDay.shouldHave(Condition.exactText("2"), Duration.ofSeconds(5));
-        String previousMonth = app.claimPage.previousMonth.getText();
-        app.claimPage.defaultMonth.shouldHave(Condition.exactText(previousMonth), Duration.ofSeconds(5));
-        app.claimPage.defaultYear.shouldHave(Condition.exactText(year), Duration.ofSeconds(5));
+        app.claimPage.defaultMonth.shouldHave(Condition.exactText(app.claimPage.previousMonth.getText()), Duration.ofSeconds(5));
+        app.claimPage.defaultYear.shouldHave(Condition.exactText(app.claimPage.getCurrentYear()), Duration.ofSeconds(5));
     }
 
     /**
      * Проверка "Выбор дня текущего месяца в поле From Date"
      * 1. Открыть календарь
      * 2. Выбрать число (1)
-     * 3. Проверить, что число выбрано верно
+     * 3. Проверить, что в календаре отображается выбранное ранее число
      */
     @Test
     public void selectDateInFromDate() {
-        String date = "1";
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.claimPage.openClaimPage();
         app.claimPage.openCalendarFromDate();
         app.claimPage.fromDate.shouldBe(Condition.visible, Duration.ofSeconds(5));
-        app.claimPage.listOfDate.getWrappedElement().findElement(byText(date)).click();
+        app.claimPage.selectDate("1");
         app.claimPage.calendarBtn.click();
-        app.claimPage.defaultDay.shouldHave(Condition.exactText(date), Duration.ofSeconds(5));
+        app.claimPage.defaultDay.shouldHave(Condition.exactText("1"), Duration.ofSeconds(5));
     }
 
     /**
@@ -94,6 +87,8 @@ public class ClaimTest extends BaseTest {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.claimPage.openClaimPage();
         app.claimPage.openCalendarFromDate();
-        app.claimPage.checkDefaultMonthAndYear();
+        app.claimPage.defaultDayToday.shouldHave(Condition.exactText(app.claimPage.getCurrentDay()), Duration.ofSeconds(6));
+        app.claimPage.defaultMonth.shouldHave(Condition.exactText(app.claimPage.getCurrentMonth()), Duration.ofSeconds(5));
+        app.claimPage.defaultYear.shouldHave(Condition.exactText(app.claimPage.getCurrentYear()), Duration.ofSeconds(5));
     }
 }

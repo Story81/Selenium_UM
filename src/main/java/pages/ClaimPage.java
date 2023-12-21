@@ -3,13 +3,14 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
+import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.time.LocalDateTime;
+import java.util.Locale;
 
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
-public class ClaimPage extends BasePage{
+public class ClaimPage extends BasePage {
 
     /**
      * Frontend elements found by xpass
@@ -18,7 +19,6 @@ public class ClaimPage extends BasePage{
     public SelenideElement fromDateTextBox = $(byXpath("(//input[@placeholder='yyyy-mm-dd'])[1]"));
     public SelenideElement errorMessage = $(byXpath("//span[@class='oxd-text oxd-text--span oxd-input-field-error-message oxd-input-group__message']"));
     public SelenideElement space = $(byXpath("//div[@class='oxd-form-actions']"));
-
     public SelenideElement buttonSearch = $(byXpath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space']"));
     public SelenideElement recordsFound = $(byXpath("//div[@class='orangehrm-horizontal-padding orangehrm-vertical-padding']"));
     public SelenideElement calendarBtn = $(byXpath("(//i[@class='oxd-icon bi-calendar oxd-date-input-icon'])[1]"));
@@ -32,78 +32,46 @@ public class ClaimPage extends BasePage{
     public SelenideElement defaultDayToday = $(byXpath("//div[@class='oxd-calendar-date --selected --today']"));
     public SelenideElement defaultDay = $(byXpath("//div[@class='oxd-calendar-date --selected']"));
     public SelenideElement salectedDay = $(byXpath("//div[@class='oxd-calendar-date --selected']"));
+    public SelenideElement previousMonth = $(byXpath("(//p[@class='oxd-text oxd-text--p'])[1]"));
 
-
-    public SelenideElement previousMonth =$(byXpath("(//p[@class='oxd-text oxd-text--p'])[1]"));
-
-    /**
-     * Проверка "переход в секцию Claim
-     */
-    public void openClaimPage() {
+      public void openClaimPage() {
         iconClaim.click();
     }
+
     public void openCalendarFromDate() {
         calendarBtn.click();
         calendar.shouldBe(Condition.visible, Duration.ofSeconds(5));
     }
-//    public void checkDefaultMonthAndYear(String day, String month, String year) {
-//        defaultDayToday.shouldHave(Condition.exactText(day), Duration.ofSeconds(5));
-//        defaultMonth.shouldHave(Condition.exactText(month), Duration.ofSeconds(5));
-//        defaultYear.shouldHave(Condition.exactText(year), Duration.ofSeconds(5));
+
+    public void selectDate(String date) {
+        SelenideElement exactDate = $(byXpath("(//div[@class='oxd-calendar-date'])[" + date + "]"));
+        exactDate.click();
+    }
+
+    //
+//    public String getPreviousMonth() {
+//        java.util.Calendar cal = java.util.Calendar.getInstance();
+//        String currentMonth = (new SimpleDateFormat("MM").format(cal.getTime()));
+//        String prevMonth = String.valueOf(Integer.parseInt(currentMonth) - 1);
+//        String previousMonth =  ((prevMonth, java.util.Calendar.LONG, Locale.ENGLISH ));
+//
+//        return previousMonth;
 //    }
+    public String getCurrentMonth() {
+        java.util.Calendar c = java.util.Calendar.getInstance();
+        String currentMonth = (c.getDisplayName(java.util.Calendar.MONTH, java.util.Calendar.LONG, Locale.ENGLISH));
+        return currentMonth;
+    }
 
-    public void checkDefaultMonthAndYear() {
-        String expression = String.valueOf((LocalDateTime.now()));
-        String year;
-        String month;
-        String day;
+    public String getCurrentYear() {
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        String currentYear = (new SimpleDateFormat("yyyy").format(cal.getTime()));
+        return currentYear;
+    }
 
-        year = String.valueOf(Integer.parseInt(expression.substring(0, 4)));
-        day = String.valueOf(Integer.parseInt(expression.substring(8, 10)));
-
-        int monthDigits = Integer.parseInt(expression.substring(5, 7));
-        switch (monthDigits) {
-            case 1:
-                month = "January";
-                break;
-            case 2:
-                month = "February";
-                break;
-            case 3:
-                month = "мMarch";
-                break;
-            case 4:
-                month = "April";
-                break;
-            case 5:
-                month = "May";
-                break;
-            case 6:
-                month = "June";
-                break;
-            case 7:
-                month = "July";
-                break;
-            case 8:
-                month = "August";
-                break;
-            case 9:
-                month = "September";
-                break;
-            case 10:
-                month = "October";
-                break;
-            case 11:
-                month = "November";
-                break;
-            case 12:
-                month = "December";
-                break;
-            default:
-                month = "wrong name";
-        }
-        defaultDayToday.shouldHave(Condition.exactText(day), Duration.ofSeconds(5));
-        defaultMonth.shouldHave(Condition.exactText(month), Duration.ofSeconds(5));
-        defaultYear.shouldHave(Condition.exactText(year), Duration.ofSeconds(5));
+    public String getCurrentDay() {
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        String currentDay = (new SimpleDateFormat("dd").format(cal.getTime()));
+        return currentDay;
     }
 }

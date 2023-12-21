@@ -21,8 +21,6 @@ public class MyInfoPage {
     public SelenideElement bloodTypeDropdownTab = $(byXpath("(//div[@class='oxd-select-text--after'])[3]"));
     public SelenideElement bloodTypeDropDown = $(byXpath("//div[@class='oxd-select-dropdown --positon-bottom']"));
     public SelenideElement saveButton2 = $(byXpath("(//button[@class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space'])[2]"));
-
-
     public SelenideElement itemMemberships = $(byXpath("//a[@href='/web/index.php/pim/viewMemberships/empNumber/7']"));
     public SelenideElement questionBtn = $(byXpath("//i[@class='oxd-icon bi-question-lg']"));
     public SelenideElement d = $(By.xpath("//link[@href='https://starterhelp4.orangehrm.com/hc/en-us']"));

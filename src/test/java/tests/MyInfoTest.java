@@ -2,11 +2,10 @@ package tests;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
-
-import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.testng.Tag;
 import jdk.jfr.Description;
 import org.openqa.selenium.Keys;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -48,7 +47,8 @@ public class MyInfoTest extends BaseTest {
         app.loginPage.login(app.userCredentials.adminLogin, app.userCredentials.adminPassword);
         app.myInfoPage.iconMyInfo.click();
         app.myInfoPage.itemMemberships.click();
-        File file = Selenide.download("https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewAttachment/empNumber/7/attachId/2", 5000);
+        File abc = Selenide.download("https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewAttachment/empNumber/7/attachId/2", 5000);
+        Assert.assertTrue(abc.isFile());
     }
 
     /**

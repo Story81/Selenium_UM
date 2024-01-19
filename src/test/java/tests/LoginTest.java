@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class LoginTest extends BaseTest {
 
     /**
-     * Авторизация с верным логином и паролем
+     * Авторизация с верным логином и паролем ()
      */
     @Test
     @Description("")
